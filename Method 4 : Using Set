@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+bool isSubset(int arr1[], int arr2[], int m, int n)
+{
+    // Using STL set for hashing
+    set hashset;
+ 
+    // hset stores all the values of arr1
+    for (int i = 0; i < m; i++)
+    {
+        hashset.insert(arr1[i]);
+    }
+ 
+    // loop to check if all elements of arr2 also
+    // lies in arr1
+    for (int i = 0; i < n; i++) {
+        if (hashset.find(arr2[i]) == hashset.end())
+            return false;
+    }
+    return true;
+}
+ 
+// Driver code
+int main()
+{
+    int arr1[] = { 11, 10, 13, 21, 30, 70 };
+    int arr2[] = { 11, 30, 70, 10 };
+ 
+    int m = sizeof(arr1) / sizeof(arr1[0]);
+    int n = sizeof(arr2) / sizeof(arr2[0]);
+    
+    if (isSubset(arr1, arr2, m, n))
+        cout<<"arr2[] is subset of arr1[] ";
+    else
+        cout<<"arr2[] is not a subset of arr1[]";
+ 
+    return 0;
+}
